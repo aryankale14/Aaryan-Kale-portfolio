@@ -452,6 +452,38 @@ ul {
     color: var(--text-muted);
     margin-bottom: 1.5rem;
     flex-grow: 1;
+    height: 120px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.project-desc ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.project-desc li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+/* Custom Scrollbar for Project Description */
+.project-desc::-webkit-scrollbar {
+    width: 4px;
+}
+
+.project-desc::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.project-desc::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+.project-desc::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
 }
 
 .project-tech {

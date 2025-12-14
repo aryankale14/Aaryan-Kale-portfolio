@@ -139,6 +139,7 @@ ul {
     text-align: center;
     background: var(--gradient-1);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 700;
 }
@@ -286,6 +287,7 @@ ul {
     margin-bottom: 1rem;
     background: linear-gradient(to right, #fff, #a0a0a0);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -552,6 +554,10 @@ ul {
 
 .cert .timeline-content span.date {
     color: var(--secondary-color);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
 }
 
 .timeline-content h3 {
@@ -599,13 +605,27 @@ footer {
 }
 
 /* Mobile Responsiveness */
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
+
+    /* Disable Custom Cursor on Touch Devices */
+    .cursor,
+    .cursor-follower {
+        display: none !important;
+    }
+
+    /* Reset cursor for all elements */
+    * {
+        cursor: auto !important;
+    }
+
     .navbar {
-        padding: 20px;
+        padding: 15px 20px;
     }
 
     .logo {
         z-index: 1001;
+        font-size: 1.5rem;
     }
 
     .nav-links {
@@ -614,11 +634,12 @@ footer {
         right: 0;
         height: 100vh;
         width: 70%;
-        background: rgba(5, 5, 5, 0.95);
+        background: rgba(5, 5, 5, 0.98);
         flex-direction: column;
         justify-content: center;
         transform: translateX(100%);
-        transition: 0.3s;
+        transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
     }
 
     .nav-links.active {
@@ -630,15 +651,88 @@ footer {
         z-index: 1001;
     }
 
+    /* Hero Optimizations */
     .hero .name {
         font-size: 3rem;
+        /* Fallback */
+        font-size: clamp(2.5rem, 10vw, 4rem);
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
     }
 
+    .hero .greeting {
+        font-size: 1.1rem;
+    }
+
+    .hero .role {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        padding: 0 40px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        text-align: center;
+        padding: 0.7rem 1.5rem;
+    }
+
+    /* Section Spacing */
     .section {
         padding: 60px 0;
     }
 
     .section-title {
-        font-size: 2.2rem;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    /* About Section */
+    .about-text p {
+        font-size: 1rem;
+        line-height: 1.5;
+        text-align: left;
+        /* Better for reading on mobile */
+    }
+
+    .glass-card {
+        padding: 1.5rem;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Projects */
+    .project-card {
+        margin-bottom: 20px;
+    }
+
+    .contact-actions {
+        width: 100%;
+    }
+
+    .big-btn {
+        width: 100%;
+    }
+}
+
+/* Specific fix for high-res touch devices (Tablets/Phones) to ensure cursor is gone */
+@media (hover: none) and (pointer: coarse) {
+
+    .cursor,
+    .cursor-follower {
+        display: none !important;
+    }
+
+    * {
+        cursor: auto !important;
     }
 }

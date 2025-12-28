@@ -253,4 +253,73 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("scroll", reveal);
     reveal(); // Trigger once on load
+
+    // About 'Read More' functionality
+    const readMoreBtn = document.getElementById("read-more-btn");
+    const aboutMore = document.getElementById("about-more");
+
+    if (readMoreBtn && aboutMore) {
+        readMoreBtn.addEventListener("click", () => {
+            aboutMore.classList.toggle("show");
+            if (aboutMore.classList.contains("show")) {
+                readMoreBtn.textContent = "Show less";
+            } else {
+                readMoreBtn.textContent = "Read more...";
+            }
+        });
+    }
+
+    // Project Modal functionality
+    const modal = document.getElementById("project-modal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalDate = document.getElementById("modal-date");
+    const modalBody = document.getElementById("modal-body");
+    const modalTech = document.getElementById("modal-tech");
+    const closeBtn = document.querySelector(".modal-close-btn");
+    const backBtn = document.getElementById("modal-back-btn");
+    const readMoreBtns = document.querySelectorAll(".project-read-more");
+
+    function openModal(card) {
+        const title = card.querySelector("h3").innerText;
+        const date = card.querySelector(".date").innerText;
+        const descHtml = card.querySelector(".project-desc").innerHTML;
+        const techHtml = card.querySelector(".project-tech").innerHTML;
+
+        modalTitle.innerText = title;
+        modalDate.innerText = date;
+        modalBody.innerHTML = descHtml;
+        modalTech.innerHTML = techHtml;
+
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden"; // Prevent background scrolling
+    }
+
+    function closeModal() {
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto";
+    }
+
+    readMoreBtns.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.stopPropagation(); // Prevent affecting other card clicks if any
+            const card = btn.closest(".project-card");
+            openModal(card);
+        });
+    });
+
+    if (closeBtn) {
+        closeBtn.addEventListener("click", closeModal);
+    }
+
+    if (backBtn) {
+        backBtn.addEventListener("click", closeModal);
+    }
+
+    if (modal) {
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    }
 });

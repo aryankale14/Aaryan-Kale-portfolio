@@ -754,6 +754,48 @@ footer {
     .big-btn {
         width: 100%;
     }
+
+    /* Force hide project description on mobile cards */
+    .project-desc {
+        display: none !important;
+    }
+
+    /* Ensure buttons look like buttons on mobile */
+    .project-read-more,
+    .read-more-btn {
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: inline-block !important;
+        /* Ensure border/bg are visible */
+        border: 1px solid var(--primary-color) !important;
+        padding: 8px 16px !important;
+        border-radius: 50px !important;
+        color: #fff !important;
+    }
+
+    .project-read-more {
+        background: rgba(0, 242, 234, 0.05) !important;
+        margin-top: 10px;
+    }
+
+    .read-more-btn {
+        background: transparent !important;
+        margin-left: 0 !important;
+        margin-top: 10px !important;
+        display: block !important;
+        width: max-content;
+        text-decoration: none !important;
+    }
+
+    /* Force truncation on mobile */
+    .about-hidden-content {
+        display: none !important;
+    }
+
+    .about-hidden-content.show {
+        display: block !important;
+        /* or inline-block if needed */
+    }
 }
 
 /* Specific fix for high-res touch devices (Tablets/Phones) to ensure cursor is gone */

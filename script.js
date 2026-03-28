@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Typing Effect
     const typingText = document.querySelector(".typing-text");
     if (typingText) {
-        const roles = ["AI Engineer", "Web Developer", "Cloud Architect", "Data Enthusiast"];
+        const roles = ["AI/ML Engineer", "Backend Developer", "Cloud Enthusiast", "Data Engineer"];
         let roleIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
